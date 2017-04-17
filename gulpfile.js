@@ -7,32 +7,31 @@ var gulp = require('gulp'),
     notify = require('gulp-notify'),
     pump = require('pump');
 
-
 gulp.task('default', function(){
-    gulp.start('minifycss','minifyjs');
+    gulp.start('minifycss','uglifyjs');
     // gulp.start('minifycss');
 });
 
 gulp.task('minifycss', function(cb){
     pump([
-            gulp.src('src/auth.css'),
+            gulp.src('auth/src/auth.css'),
             concat('auth.css'),
             rename({suffix:'.min'}),
             minifycss(),
-            gulp.dest('dist'),
+            gulp.dest('auth/dist'),
             notify({message: 'css minfiy done'})
         ],
         cb
     )
 });
 
-gulp.task('minifyjs', function(cb){
+gulp.task('uglifyjs', function(cb){
     pump([
-            gulp.src(['public/jquery.min.js','src/auth.js']),
+            gulp.src(['auth/public/jquery.min.js','auth/src/auth.js']),
             concat('auth.js'),
             rename({suffix:'.min'}),
             uglify(),
-            gulp.dest('dist'),
+            gulp.dest('auth/dist'),
             notify({message: 'js uglify done'})
         ],
         cb
