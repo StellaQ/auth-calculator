@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="yes" name="apple-touch-fullscreen" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta content="fullscreen=yes,preventMove=no" name="ML-Config" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>鉴权计算器</title>
+    <link href="auth/public/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="auth/public/fontcss/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="auth/dist/auth.min.css">
+    <link rel="icon" href="auth/public/TB1HwXxLpXXXXchapXXXXXXXXXX-32-32.ico" type="image/x-icon">
+</head>
+<body>
+<div class="auth-link">
+    <h4><i class="fa fa-link fa-1x mr10" aria-hidden="true"></i>鉴权文档</h4>
+    <ul>
+        <li>
+            <a href="https://help.aliyun.com/document_detail/27135.html" target="_blank">ALICDN鉴权文档</a>
+            <br>
+        </li>
+        <li>
+            <a href="https://help.aliyun.com/document_detail/27277.html" target="_blank">PYTHON代码示例</a>
+        </li>
+        <li>
+            <a href="http://aren.oss-cn-hangzhou.aliyuncs.com/dual.py" target="_blank">二次鉴权算法的PYTHON代码.py</a>
+        </li>
+    </ul>
+</div>
+<div class="auth-calculator">
+    <h4><i class="fa fa-calculator fa-1x mr10" aria-hidden="true"></i>鉴权计算器</h4>
+    <form class="form-horizontal auth-form">
+        <div class="auth-group">
+            <label class="col-sm-1 control-label">auth</label>
+            <div class="col-sm-10">
+                <select class="form-control" id="auth-to">
+                    <option>http</option>
+                    <option>rtmp</option>
+                </select>
+            </div>
+        </div>
+        <div class="auth-group">
+            <label class="col-sm-1 control-label">type</label>
+            <div class="col-sm-10 auth-type">
+                <div><input type="radio" name="type" value="req_auth" id="req-auth" checked="checked"><label for="req-auth">A鉴权方式(req_auth)</label></div>
+                <div><input type="radio" name="type" value="lanxun" id="lanxun"><label for="lanxun">B鉴权方式</label></div>
+                <div><input type="radio" name="type" value="wangsu" id="wangsu"><label for="wangsu">C鉴权方式</label></div>
+                <div id="label-panda"><input type="radio" name="type" value="panda" id="panda"><label for="panda">PandaTV鉴权方式(rtmp专用)</label></div>
+                <div><input type="radio" name="type" value="dual" id="dual"><label for="dual">二次(dual)鉴权方式</label></div>
+            </div>
+        </div>
+        <div class="auth-group">
+            <label class="col-sm-1 control-label">url</label>
+            <div class="col-sm-10">
+                <input type="url" class="form-control" id="auth-url" placeholder="鉴权url">
+                <p id="auth-url-note">填写完整的请求URL, 如: http://xc.cdnpe.com/file/auth.html</p>
+            </div>
+        </div>
+        <div class="auth-group">
+            <label class="col-sm-1 control-label">key</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="auth-key" placeholder="鉴权私钥">
+            </div>
+        </div>
+        <div class="auth-group">
+            <label class="col-sm-1 control-label">exp</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="number" class="form-control" id="auth-exp" value="86400"  placeholder="鉴权超时时间">
+                    <div class="input-group-addon">second</div>
+                </div>
+            </div>
+        </div>
+        <div class="auth-group" style="flex-direction: row-reverse;">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <a class="btn btn-info col-sm-2" id="auth-button">AUTH</a>
+                <div class="fl loading-gif" id="loading-gif">
+                    <div class="spinner">
+                        <div class="spinner-container container1">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                        </div>
+                        <div class="spinner-container container2">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                        </div>
+                        <div class="spinner-container container3">
+                        <div class="circle1"></div>
+                        <div class="circle2"></div>
+                        <div class="circle3"></div>
+                        <div class="circle4"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fl loading-result" id="loading-result">
+                    <textarea id="result-data"></textarea>
+                    <div class="result-paste tooltipped" aria-label="click to clipboard" id="result-paste">
+                        <i class="fa fa-clipboard fa-1x" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="auth/dist/auth.min.js"></script>
+</body>
+</html>
