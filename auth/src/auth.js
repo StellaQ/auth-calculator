@@ -47,8 +47,6 @@ $(document).ready(function(){
         if (url.length == 0 || key.length == 0 || exp.length == 0){
             return;
         };
-        url = encodeURIComponent(url);
-        key = encodeURIComponent(key);
         // console.log(apiUrl);
         // console.log(type);
         // console.log(url);
